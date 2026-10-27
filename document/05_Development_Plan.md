@@ -1,4 +1,4 @@
-﻿# Software Development Plan & Implementation Roadmap
+# Software Development Plan & Implementation Roadmap
 
 ## Project: Inferaxis — Autonomous AI for Evidence-Based Data Intelligence
 **Document Version:** 1.0.0  
@@ -95,7 +95,7 @@ graph TD
 * **Goal:** Implement the stateful multi-agent analytical loop using LangGraph and LangChain.
 * **Tasks:**
   1. Define global `InferaxisAnalysisState` TypedDict schema.
-  2. Configure provider-agnostic LLM interface (supporting OpenAI GPT-4o, Anthropic Claude 3.5 Sonnet, Google Gemini 1.5 Pro).
+  2. Configure dual-engine LLM interface (Groq Llama 3.3 for sub-second agent loops & Google Gemini 1.5 Pro for deep synthesis / multimodal analysis).
   3. Build `SupervisorAgent` responsible for question decomposition and dynamic `AnalysisPlan` creation.
   4. Build specialized sub-agents:
      * `DataUnderstandingAgent` (schema & column mapping).
@@ -178,7 +178,7 @@ graph TD
 
 | Risk Description | Probability | Impact | Proactive Mitigation Strategy |
 | :--- | :---: | :---: | :--- |
-| **LLM Provider Outage or Rate Limit (429)** | Medium | High | Integrate LangChain multi-provider fallback. If primary provider (e.g. OpenAI) errors, failover automatically to Anthropic or Gemini. |
+| **LLM Provider Outage or Rate Limit (429)** | Medium | High | Implement dual-provider fallback. If primary provider (Groq) encounters rate-limits or downtime, failover automatically to Google Gemini. |
 | **WebSocket Connection Drops during Analysis** | High | Medium | Store all agent events in Redis keyed by `session_id`. Upon client reconnection, stream full event history to reconstruct UI state. |
 | **Complex Multi-Table Joins Requested by User** | Medium | Medium | Explicitly scope MVP to single-table datasets. Supervisor agent detects multi-table queries and gracefully explains single-dataset scope for Phase 1. |
 | **Chart Rendering Overload on Large Point Counts** | High | Low | Controlled `ChartSpecTool` automatically downsamples or bins data points to a maximum of 500 points before returning JSON to frontend. |

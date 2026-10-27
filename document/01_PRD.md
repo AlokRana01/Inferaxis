@@ -1,4 +1,4 @@
-﻿# Product Requirements Document (PRD)
+# Product Requirements Document (PRD)
 
 ## Project: Inferaxis — Autonomous AI for Evidence-Based Data Intelligence
 **Document Version:** 1.0.0  
@@ -193,7 +193,7 @@ To build an autonomous AI Data Scientist that **actively investigates data** rat
 | **Assumption:** Datasets have clean headers and tabular format. | Medium | High | Implement robust parsing fallback with encoding detection (`chardet`), header inference, and whitespace stripping. |
 | **Risk: LLM Tool Selection Error:** Agent selects incorrect columns or inappropriate statistical test. | High | Medium | Enforce strict Pydantic schemas, column name fuzzy-matching, and supervisor validation gates before tool invocation. |
 | **Risk: Large Dataset Memory Overhead:** Uploading large CSVs causes Out-Of-Memory (OOM) on backend server. | High | Low | Enforce 50MB file size limit for MVP; use streaming file upload and chunked Polars/Pandas reading. |
-| **Risk: LLM Rate Limiting or Provider Outage:** Provider API fails during multi-step graph execution. | Medium | Medium | Support interchangeable LLM providers (OpenAI, Anthropic, Gemini) via unified LangChain interface with automatic exponential backoff retry. |
+| **Risk: LLM Rate Limiting or Provider Outage:** Provider API fails during multi-step graph execution. | Medium | Medium | Implement dual-provider architecture (Groq primary with Google Gemini fallback) with automatic failover and exponential backoff retry. |
 | **Risk: Over-interpretation of Spurious Correlations:** System misleads users into thinking correlation implies causation. | High | Medium | Enforce system-prompt guardrails and UI warning badges explicitly distinguishing correlation from causal claims. |
 
 ---

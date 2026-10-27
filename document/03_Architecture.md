@@ -1,4 +1,4 @@
-﻿# System Architecture Document (SAD)
+# System Architecture Document (SAD)
 
 ## Project: Inferaxis — Autonomous AI for Evidence-Based Data Intelligence
 **Document Version:** 1.0.0  
@@ -66,7 +66,7 @@ Inferaxis is engineered as an asynchronous, event-driven, multi-tier system that
 | **Backend API** | **FastAPI** | 0.111+ | High-performance asynchronous Python framework, native OpenAPI schema generation, Pydantic v2 validation. |
 | **Async Server** | **Uvicorn** / **Gunicorn** | Uvicorn 0.30+ | ASGI production server supporting async WebSocket connections and high concurrent throughput. |
 | **Agentic Framework** | **LangGraph** | 0.0.60+ | Graph-based stateful multi-agent orchestration with conditional branching, cyclic loops, and checkpointing. |
-| **LLM Provider Abstraction**| **LangChain Core** | 0.2+ | Seamless switching between OpenAI (GPT-4o), Anthropic (Claude 3.5 Sonnet), and Google (Gemini 1.5 Pro). |
+| **LLM Provider Stack**| **Groq** + **Google Gemini** | Groq Llama 3.3 / Gemini 1.5 Pro | Dual-engine architecture: Groq provides sub-second agent reasoning loops and code generation; Google Gemini provides large-context dataset synthesis, multi-modal reasoning, and robust fallback redundancy. |
 | **Data Science Engine** | **Pandas**, **NumPy**, **SciPy** | Modern 2.x | Benchmark libraries for tabular manipulations, linear algebra, and hypothesis testing. |
 | **Relational Database** | **PostgreSQL** | 16-alpine | ACID-compliant relational storage for users, datasets, session metadata, tool logs, and reports. |
 | **ORM / Migration** | **SQLAlchemy** + **Alembic** | SQLAlchemy 2.0 (asyncpg) | Fully async database access with type annotations and automated migration management. |
@@ -400,8 +400,9 @@ services:
     environment:
       - DATABASE_URL=postgresql+asyncpg://inferaxis_user:secure_pwd@postgres:5432/inferaxis_db
       - REDIS_URL=redis://redis:6379/0
-      - LLM_PROVIDER=openai
-      - LLM_API_KEY=${LLM_API_KEY}
+      - LLM_PROVIDER=groq
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
       - STORAGE_PATH=/app/storage
     volumes:
       - dataset_storage:/app/storage

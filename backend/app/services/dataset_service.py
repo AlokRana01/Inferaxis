@@ -14,10 +14,12 @@ from app.core.config import get_settings
 from app.core.storage import LocalStorageService, get_storage_service
 from app.models.dataset import Dataset
 from app.models.workspace import Workspace
+from app.schemas.dataset import DatasetAIInsightsDTO
 from app.services.ingestor import (
     DataIngestor,
     UnsupportedFileFormatError,
 )
+from app.services.llm_router import LLMRouter, LLMTaskType, get_llm_router
 from app.services.profiler import DataQualityProfiler
 
 logger = logging.getLogger("inferaxis.dataset_service")
@@ -184,3 +186,56 @@ class DatasetService:
                 )
             raise DatasetNotFoundError(f"Dataset '{dataset_id}' not found")
         return dataset
+
+    async def generate_ai_insights(
+        self,
+        db: AsyncSession,
+        dataset_id: uuid.UUID,
+        workspace_id: uuid.UUID | None = None,
+        llm_router: LLMRouter | None = None,
+    ) -> DatasetAIInsightsDTO:
+        """Analyze dataset profile and metadata using LLM to generate executive insights, quality alerts, and hypotheses."""
+        dataset = await self.get_dataset_by_id(
+            db, dataset_id=dataset_id, workspace_id=workspace_id
+        )
+        router = llm_router or get_llm_router()
+
+        schema = dataset.schema_metadata or {}
+        columns = [str(col.get("name")) for col in schema.get("columns", [])]
+        summary = dataset.profile_summary or {}
+
+        prompt = (
+            f"Dataset Name: {dataset.file_name}\n"
+            f"Rows: {dataset.row_count}, Columns: {dataset.col_count}\n"
+            f"Health Score: {dataset.health_score} / 100\n"
+            f"Columns: {', '.join(columns)}\n"
+            f"Data Summary: {summary.get('shape', {})}\n\n"
+            "Analyze this dataset profile and provide:\n"
+            "1. Executive Summary: 2-3 sentences explaining what this dataset contains and overall readiness.\n"
+            "2. Quality Alerts: List any critical data quality warnings or missing value issues.\n"
+            "3. Suggested Hypotheses: 3 clear, testable hypotheses for exploratory data analysis.\n"
+            "4. Suggested Visualizations: 2-3 chart types with recommended axes.\n"
+            "Format your answer cleanly with Markdown headings."
+        )
+
+        system_prompt = (
+            "You are Inferaxis AI Data Intelligence Scientist. Provide concise, rigorous, "
+            "evidence-based analytical assessment of dataset metadata."
+        )
+
+        ai_response = await router.complete(
+            prompt=prompt,
+            system_prompt=system_prompt,
+            task_type=LLMTaskType.FAST,
+        )
+
+        return DatasetAIInsightsDTO(
+            dataset_id=dataset.id,
+            file_name=dataset.file_name,
+            summary=ai_response,
+            quality_alerts=[],
+            suggested_hypotheses=[],
+            suggested_visualizations=[],
+            provider_used=router.settings.LLM_PROVIDER,
+        )
+

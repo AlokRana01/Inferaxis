@@ -70,3 +70,17 @@ class DatasetProfileResponseDTO(BaseModel):
     health_score: float
     schema_metadata: dict[str, Any] | None = None
     profile_summary: dict[str, Any] | None = None
+
+
+class DatasetAIInsightsDTO(BaseModel):
+    """AI-generated executive summary, quality alerts, and recommended hypotheses."""
+
+    model_config = ConfigDict(from_attributes=True)
+
+    dataset_id: uuid.UUID
+    file_name: str
+    summary: str
+    quality_alerts: list[str] = Field(default_factory=list)
+    suggested_hypotheses: list[str] = Field(default_factory=list)
+    suggested_visualizations: list[str] = Field(default_factory=list)
+    provider_used: str

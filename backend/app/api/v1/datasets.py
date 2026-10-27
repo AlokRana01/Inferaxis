@@ -20,7 +20,11 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.core.storage import FileSizeLimitExceededError
-from app.schemas.dataset import DatasetProfileResponseDTO, DatasetResponseDTO
+from app.schemas.dataset import (
+    DatasetAIInsightsDTO,
+    DatasetProfileResponseDTO,
+    DatasetResponseDTO,
+)
 from app.services.dataset_service import (
     DatasetNotFoundError,
     DatasetService,
@@ -183,3 +187,38 @@ async def get_dataset_profile(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=str(err),
         ) from err
+
+
+@router.post(
+    "/{dataset_id}/ai-insights",
+    response_model=DatasetAIInsightsDTO,
+    summary="Generate automated AI executive summary, quality alerts, and hypotheses",
+)
+async def generate_dataset_ai_insights(
+    dataset_id: uuid.UUID,
+    db: Annotated[AsyncSession, Depends(get_db)],
+    service: Annotated[DatasetService, Depends(get_dataset_service)],
+    workspace_id: Annotated[
+        uuid.UUID | None,
+        Query(description="Optional Workspace UUID to enforce isolation"),
+    ] = None,
+) -> DatasetAIInsightsDTO:
+    """Trigger LLM analysis over dataset profile to generate executive insights and suggested hypotheses."""
+    try:
+        return await service.generate_ai_insights(
+            db=db,
+            dataset_id=dataset_id,
+            workspace_id=workspace_id,
+        )
+    except DatasetNotFoundError as err:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(err),
+        ) from err
+    except Exception as err:
+        logger.exception("AI insights generation failed for dataset '%s'", dataset_id)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to generate AI insights: {err}",
+        ) from err
+

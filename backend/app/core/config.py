@@ -47,6 +47,22 @@ class Settings(BaseSettings):
     # Redis
     REDIS_URL: str = "redis://localhost:6379/0"
 
+    # LLM Providers (Groq, Google Gemini, and NVIDIA NIM)
+    LLM_PROVIDER: str = "groq"
+    LLM_FALLBACK_PROVIDER: str = "gemini"
+    GROQ_API_KEY: str | None = None
+    GROQ_MODEL: str = "llama-3.3-70b-versatile"
+    GEMINI_API_KEY: str | None = None
+    GEMINI_MODEL: str = "gemini-1.5-pro"
+    NVIDIA_API_KEY: str | None = None
+    NVIDIA_BASE_URL: str = "https://integrate.api.nvidia.com/v1"
+    NVIDIA_MODEL: str = "meta/llama-3.3-70b-instruct"
+
+    # NVIDIA Document & Table Parsing (Nemotron Parse)
+    NVIDIA_PARSE_API_KEY: str | None = None
+    NVIDIA_PARSE_BASE_URL: str = "https://integrate.api.nvidia.com/v1"
+    NVIDIA_PARSE_MODEL: str = "nvidia/nemotron-3.5-parse"
+
     # Storage
     STORAGE_PATH: str = "./storage"
     DATASET_STORAGE_PATH: str = "./storage/datasets"

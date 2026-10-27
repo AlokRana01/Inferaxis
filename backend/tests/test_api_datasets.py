@@ -1,6 +1,7 @@
 """Integration tests for Dataset API endpoints."""
 
 import io
+from unittest.mock import AsyncMock, MagicMock, patch
 import uuid
 
 import openpyxl
@@ -166,3 +167,43 @@ async def test_workspace_isolation_cross_access_prevented(
         params={"workspace_id": str(ws_b.id)},
     )
     assert cross_profile_res.status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_generate_ai_insights_endpoint(
+    async_client: AsyncClient, db_session: AsyncSession
+):
+    """Verify POST /api/v1/datasets/{dataset_id}/ai-insights returns structured AI summary."""
+    workspace = Workspace(name="Insights Hub", owner_id="user_insights")
+    db_session.add(workspace)
+    await db_session.flush()
+
+    csv_content = b"feature_1,feature_2,label\n1.2,3.4,0\n5.6,7.8,1\n"
+    files = {"file": ("insights_data.csv", io.BytesIO(csv_content), "text/csv")}
+    upload_res = await async_client.post(
+        "/api/v1/datasets/upload",
+        files=files,
+        data={"workspace_id": str(workspace.id)},
+    )
+    dataset_id = upload_res.json()["id"]
+
+    with patch("app.services.dataset_service.get_llm_router") as mock_router_getter:
+        mock_router = MagicMock()
+        mock_router.settings.LLM_PROVIDER = "groq"
+        mock_router.complete = AsyncMock(
+            return_value="### Executive Summary\nHigh-quality dataset ready for classification."
+        )
+        mock_router_getter.return_value = mock_router
+
+        response = await async_client.post(
+            f"/api/v1/datasets/{dataset_id}/ai-insights",
+            params={"workspace_id": str(workspace.id)},
+        )
+
+        assert response.status_code == 200
+        payload = response.json()
+        assert payload["dataset_id"] == dataset_id
+        assert payload["file_name"] == "insights_data.csv"
+        assert "Executive Summary" in payload["summary"]
+        assert payload["provider_used"] == "groq"
+

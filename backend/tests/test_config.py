@@ -33,3 +33,28 @@ def test_is_sqlite_detection():
         DATABASE_URL="postgresql+asyncpg://user:pass@localhost:5432/db"
     )
     assert pg_settings.is_sqlite is False
+
+
+def test_llm_settings_configuration():
+    """Verify default and customized Groq, Gemini, and NVIDIA NIM LLM provider settings."""
+    settings = Settings(
+        DATABASE_URL="sqlite+aiosqlite:///test.db",
+        GROQ_API_KEY="test_groq_key",
+        GEMINI_API_KEY="test_gemini_key",
+        NVIDIA_API_KEY="test_nvidia_key",
+        NVIDIA_PARSE_API_KEY="test_parse_key",
+    )
+    assert settings.LLM_PROVIDER == "groq"
+    assert settings.LLM_FALLBACK_PROVIDER == "gemini"
+    assert settings.GROQ_MODEL == "llama-3.3-70b-versatile"
+    assert settings.GEMINI_MODEL == "gemini-1.5-pro"
+    assert settings.NVIDIA_BASE_URL == "https://integrate.api.nvidia.com/v1"
+    assert settings.NVIDIA_MODEL == "meta/llama-3.3-70b-instruct"
+    assert settings.NVIDIA_PARSE_BASE_URL == "https://integrate.api.nvidia.com/v1"
+    assert settings.NVIDIA_PARSE_MODEL == "nvidia/nemotron-3.5-parse"
+    assert settings.GROQ_API_KEY == "test_groq_key"
+    assert settings.GEMINI_API_KEY == "test_gemini_key"
+    assert settings.NVIDIA_API_KEY == "test_nvidia_key"
+    assert settings.NVIDIA_PARSE_API_KEY == "test_parse_key"
+
+
