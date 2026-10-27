@@ -1,18 +1,18 @@
-# Nexora
+﻿# Inferaxis
 
 ### Autonomous AI for Evidence-Based Data Intelligence
 
 > **Status: 🚧 Under Active Development**
 
-Nexora is an AI-powered autonomous data intelligence platform designed to transform natural-language questions and raw datasets into **evidence-backed analysis, visualizations, insights, and recommendations**.
+Inferaxis is an AI-powered autonomous data intelligence platform designed to transform natural-language questions and raw datasets into **evidence-backed analysis, visualizations, insights, and recommendations**.
 
 The project combines **Agentic AI, Data Science, Machine Learning, Statistical Analysis, Explainable AI, and Full-Stack Engineering** into a single production-oriented platform.
 
-Nexora is currently in the early development stage. The architecture and core product are being built incrementally, with the goal of developing a complete AI-powered data scientist rather than a simple chatbot.
+Inferaxis is currently in the early development stage. The architecture and core product are being built incrementally, with the goal of developing a complete AI-powered data scientist rather than a simple chatbot.
 
 ---
 
-## What is Nexora?
+## What is Inferaxis?
 
 Traditional AI data analysis can follow a simple pattern:
 
@@ -20,7 +20,7 @@ Traditional AI data analysis can follow a simple pattern:
 Dataset → LLM → Answer
 ```
 
-Nexora is being designed around a more rigorous Data Science workflow:
+Inferaxis is being designed around a more rigorous Data Science workflow:
 
 ```text
 Dataset
@@ -58,13 +58,13 @@ Actual calculations, statistical tests, data processing, machine learning, and v
 
 # Vision
 
-Nexora aims to become an **AI Data Scientist that can investigate data rather than simply talk about it.**
+Inferaxis aims to become an **AI Data Scientist that can investigate data rather than simply talk about it.**
 
 A user should eventually be able to upload a dataset and ask:
 
 > **"Why did revenue decrease in Q3?"**
 
-Instead of immediately generating an answer, Nexora should:
+Instead of immediately generating an answer, Inferaxis should:
 
 1. Understand the dataset.
 2. Inspect its structure and quality.
@@ -133,9 +133,9 @@ Instead of immediately generating an answer, Nexora should:
 
 ---
 
-# Why Nexora?
+# Why Inferaxis?
 
-Nexora is intentionally different from a generic AI chatbot.
+Inferaxis is intentionally different from a generic AI chatbot.
 
 The platform is being designed around five principles:
 
@@ -175,7 +175,7 @@ Insight
 
 ### 5. Correlation Is Not Causation
 
-Nexora should distinguish between:
+Inferaxis should distinguish between:
 
 * Observation
 * Correlation
@@ -219,7 +219,7 @@ The system should determine which analyses are relevant to the question instead 
 
 ## AI ML Scientist
 
-A second mode will extend Nexora into machine learning.
+A second mode will extend Inferaxis into machine learning.
 
 Planned workflow:
 
@@ -267,7 +267,7 @@ Planned explainability capabilities:
 
 # Multi-Agent System
 
-Nexora will use a specialized multi-agent architecture orchestrated through **LangGraph**.
+Inferaxis will use a specialized multi-agent architecture orchestrated through **LangGraph**.
 
 | Agent                    | Responsibility                                                   |
 | ------------------------ | ---------------------------------------------------------------- |
@@ -414,7 +414,7 @@ API credentials will never be hard-coded.
 
 # Planned User Interface
 
-Nexora will use a modern web-based interface rather than Streamlit.
+Inferaxis will use a modern web-based interface rather than Streamlit.
 
 ## Dashboard
 
@@ -491,7 +491,7 @@ and asks:
 
 > **Why did revenue decrease in Q3?**
 
-Nexora could create an analytical workflow:
+Inferaxis could create an analytical workflow:
 
 ```text
 User Question
@@ -613,7 +613,7 @@ The goal is to build the **core experience first**.
 
 # Development Roadmap
 
-Nexora will be developed incrementally.
+Inferaxis will be developed incrementally.
 
 ```text
 Phase 1
@@ -707,7 +707,7 @@ Add:
 * Statistical Agent
 * Visualization Agent
 
-**Goal:** Nexora can automatically investigate a dataset.
+**Goal:** Inferaxis can automatically investigate a dataset.
 
 ---
 
@@ -783,7 +783,7 @@ Potential additions:
 # Planned Project Structure
 
 ```text
-nexora/
+inferaxis/
 │
 ├── frontend/
 │   ├── src/
@@ -943,7 +943,7 @@ The schema will evolve with the implementation.
 
 # Security
 
-Because Nexora will eventually process user-uploaded datasets, security is an important part of the architecture.
+Because Inferaxis will eventually process user-uploaded datasets, security is an important part of the architecture.
 
 Planned protections include:
 
@@ -962,7 +962,7 @@ Planned protections include:
 
 ### Important Rule
 
-> **Nexora must never execute arbitrary Python code supplied by a user.**
+> **Inferaxis must never execute arbitrary Python code supplied by a user.**
 
 ---
 
@@ -988,7 +988,7 @@ Errors should be presented to users in understandable language rather than expos
 
 # Observability
 
-Nexora is intended to provide visibility into the analytical pipeline.
+Inferaxis is intended to provide visibility into the analytical pipeline.
 
 The system will eventually track:
 
@@ -1064,7 +1064,7 @@ These features are intentionally outside the initial MVP.
 
 # Portfolio Objective
 
-Nexora is being developed as a portfolio-level project to demonstrate the ability to move beyond notebook-based Data Science and build a complete AI-powered product.
+Inferaxis is being developed as a portfolio-level project to demonstrate the ability to move beyond notebook-based Data Science and build a complete AI-powered product.
 
 The project aims to demonstrate:
 
@@ -1088,7 +1088,7 @@ The project aims to demonstrate:
 | Component             | Status           |
 | --------------------- | ---------------- |
 | Product Concept       | ✅ Defined        |
-| Product Name          | ✅ Nexora         |
+| Product Name          | ✅ Inferaxis         |
 | Core Architecture     | ✅ Initial design |
 | GitHub Repository     | 🚧 Started       |
 | Frontend              | ⏳ Not started    |
@@ -1101,7 +1101,7 @@ The project aims to demonstrate:
 | Reporting             | ⏳ Planned        |
 | Production Deployment | ⏳ Planned        |
 
-> **Nexora is currently a work in progress and is not production-ready.**
+> **Inferaxis is currently a work in progress and is not production-ready.**
 
 The repository will evolve continuously as development progresses.
 
@@ -1110,7 +1110,7 @@ The repository will evolve continuously as development progresses.
 # Project Status
 
 ```text
-🚧 NEXORA
+🚧 INFERAXIS
 Autonomous AI for Evidence-Based Data Intelligence
 
 Current Stage:
@@ -1124,7 +1124,7 @@ Phase 1 — Project Foundation
 
 # Disclaimer
 
-Nexora is an experimental and educational portfolio project under active development.
+Inferaxis is an experimental and educational portfolio project under active development.
 
 Architecture, features, APIs, agent responsibilities, UI design, and technology choices may change as the project evolves.
 
@@ -1138,7 +1138,7 @@ License information will be added as the project reaches a stable release stage.
 
 ---
 
-## Nexora
+## Inferaxis
 
 > **Autonomous AI for Evidence-Based Data Intelligence.**
 

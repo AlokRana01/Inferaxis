@@ -1,17 +1,17 @@
-# System Architecture Document (SAD)
+﻿# System Architecture Document (SAD)
 
-## Project: Nexora — Autonomous AI for Evidence-Based Data Intelligence
+## Project: Inferaxis — Autonomous AI for Evidence-Based Data Intelligence
 **Document Version:** 1.0.0  
 **Status:** Approved Architecture Baseline  
 **Target Release:** MVP (Phase 1)  
-**Author:** Nexora Core Engineering & Infrastructure Team  
+**Author:** Inferaxis Core Engineering & Infrastructure Team  
 **Last Updated:** October 2026  
 
 ---
 
 ## 1. Architectural Overview & Design Principles
 
-Nexora is engineered as an asynchronous, event-driven, multi-tier system that decouples **high-level probabilistic reasoning** (LLM-based multi-agent orchestration) from **deterministic quantitative computation** (sandboxed Python Data Science tools).
+Inferaxis is engineered as an asynchronous, event-driven, multi-tier system that decouples **high-level probabilistic reasoning** (LLM-based multi-agent orchestration) from **deterministic quantitative computation** (sandboxed Python Data Science tools).
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -166,7 +166,7 @@ graph TD
 
 ### Agent State Schema:
 ```python
-class NexoraAnalysisState(TypedDict):
+class InferaxisAnalysisState(TypedDict):
     session_id: str
     user_query: str
     dataset_id: str
@@ -389,7 +389,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     environment:
-      - VITE_API_URL=https://api.nexora.local
+      - VITE_API_URL=https://api.inferaxis.local
     expose:
       - "80"
 
@@ -398,7 +398,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     environment:
-      - DATABASE_URL=postgresql+asyncpg://nexora_user:secure_pwd@postgres:5432/nexora_db
+      - DATABASE_URL=postgresql+asyncpg://inferaxis_user:secure_pwd@postgres:5432/inferaxis_db
       - REDIS_URL=redis://redis:6379/0
       - LLM_PROVIDER=openai
       - LLM_API_KEY=${LLM_API_KEY}
@@ -414,9 +414,9 @@ services:
   postgres:
     image: postgres:16-alpine
     environment:
-      - POSTGRES_USER=nexora_user
+      - POSTGRES_USER=inferaxis_user
       - POSTGRES_PASSWORD=secure_pwd
-      - POSTGRES_DB=nexora_db
+      - POSTGRES_DB=inferaxis_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
     expose:

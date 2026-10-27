@@ -1,23 +1,23 @@
-# Product Requirements Document (PRD)
+﻿# Product Requirements Document (PRD)
 
-## Project: Nexora — Autonomous AI for Evidence-Based Data Intelligence
+## Project: Inferaxis — Autonomous AI for Evidence-Based Data Intelligence
 **Document Version:** 1.0.0  
 **Status:** Approved / Active Development  
 **Target Release:** MVP (Phase 1)  
-**Author:** Nexora Core Architecture & Product Team  
+**Author:** Inferaxis Core Architecture & Product Team  
 **Last Updated:** October 2026  
 
 ---
 
 ## 1. Executive Summary
 
-**Nexora** is an autonomous AI-powered data intelligence platform designed to transform raw tabular datasets and natural-language business questions into **evidence-backed analysis, statistical insights, interactive visualizations, and actionable recommendations**.
+**Inferaxis** is an autonomous AI-powered data intelligence platform designed to transform raw tabular datasets and natural-language business questions into **evidence-backed analysis, statistical insights, interactive visualizations, and actionable recommendations**.
 
-Unlike generic conversational AI chatbots that hallucinate numbers, execute unvetted code, or jump to speculative conclusions, Nexora operates on a fundamental Data Science principle:
+Unlike generic conversational AI chatbots that hallucinate numbers, execute unvetted code, or jump to speculative conclusions, Inferaxis operates on a fundamental Data Science principle:
 
 > **"The AI reasons about the analysis. Controlled Python tools perform the analysis."**
 
-Nexora orchestrates specialized agentic roles (Supervisor, Data Understanding, Data Quality, EDA, Statistical Analysis, Visualization, Insight, and Recommendation) via **LangGraph**. The agents select from a deterministic library of verified Python Data Science functions (Pandas, SciPy, NumPy, Scikit-learn), preventing LLM calculation hallucinations and guaranteeing reproducible, mathematically sound results.
+Inferaxis orchestrates specialized agentic roles (Supervisor, Data Understanding, Data Quality, EDA, Statistical Analysis, Visualization, Insight, and Recommendation) via **LangGraph**. The agents select from a deterministic library of verified Python Data Science functions (Pandas, SciPy, NumPy, Scikit-learn), preventing LLM calculation hallucinations and guaranteeing reproducible, mathematically sound results.
 
 ---
 
@@ -49,10 +49,10 @@ To build an autonomous AI Data Scientist that **actively investigates data** rat
 
 ## 4. Target User Personas
 
-| Persona | Role & Background | Core Pain Point | How Nexora Solves It |
+| Persona | Role & Background | Core Pain Point | How Inferaxis Solves It |
 | :--- | :--- | :--- | :--- |
 | **P1: Business Analyst (Priya)** | Data-savvy analyst supporting Marketing and Operations. Proficient in Excel and basic SQL. | Spends 60% of her week cleaning data, running repetitive pivot tables, and drafting basic charts. | Uploads CSVs, asks complex diagnostic questions in plain English, and receives verified charts and bulleted evidence in minutes. |
-| **P2: Product Manager (Marcus)** | Non-technical PM tracking user retention, churn, and feature adoption. | Lacks Python/R skills; BI dashboards answer "what" happened, but cannot explain "why" metrics dropped. | Asks root-cause questions ("Why did churn surge for Android users in v2.4?"); Nexora performs multi-variate statistical tests and pinpoints drivers. |
+| **P2: Product Manager (Marcus)** | Non-technical PM tracking user retention, churn, and feature adoption. | Lacks Python/R skills; BI dashboards answer "what" happened, but cannot explain "why" metrics dropped. | Asks root-cause questions ("Why did churn surge for Android users in v2.4?"); Inferaxis performs multi-variate statistical tests and pinpoints drivers. |
 | **P3: Startup Founder / Executive (Elena)** | Seed-stage founder without a dedicated analytics team. | Needs rapid, defensible numbers for investor decks and strategic planning without hiring an expensive agency. | Generates boardroom-ready executive PDF/Markdown reports with audited data sources and actionable strategic next steps. |
 | **P4: BI / Data Science Lead (David)** | Senior Data Scientist leading analytics infrastructure. | Skeptical of AI tools due to hallucinations, compliance risks, and lack of statistical rigor. | Inspects the full agent reasoning plan, Python tool execution logs, hypothesis test outputs (p-values, degrees of freedom), and methodology. |
 
@@ -79,7 +79,7 @@ To build an autonomous AI Data Scientist that **actively investigates data** rat
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                             NEXORA MVP PLATFORM                             │
+│                             INFERAXIS MVP PLATFORM                             │
 ├─────────────────────┬───────────────────────────┬───────────────────────────┤
 │   DATA MANAGEMENT   │   AGENTIC INTELLIGENCE    │   PRESENTATION & REPORT   │
 ├─────────────────────┼───────────────────────────┼───────────────────────────┤

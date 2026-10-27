@@ -23,7 +23,7 @@ Identify:
 
 ## 2. Preserve Design Language: The Bento Grid Style ("Banto Style")
 
-Nexora's official UI/UX design architecture is the **Bento Grid (Banto Style)**.
+Inferaxis's official UI/UX design architecture is the **Bento Grid (Banto Style)**.
 
 All new screens, dashboards, and analytical workspaces must follow the Bento style principles:
 - **Modular Bento Cells:** Every distinct widget or capability lives in a self-contained card container.

@@ -1,17 +1,17 @@
-# Software Development Plan & Implementation Roadmap
+﻿# Software Development Plan & Implementation Roadmap
 
-## Project: Nexora — Autonomous AI for Evidence-Based Data Intelligence
+## Project: Inferaxis — Autonomous AI for Evidence-Based Data Intelligence
 **Document Version:** 1.0.0  
 **Status:** Approved Engineering Roadmap  
 **Target Release:** MVP (Phase 1)  
-**Author:** Nexora Engineering Management & Lead Architecture  
+**Author:** Inferaxis Engineering Management & Lead Architecture  
 **Last Updated:** October 2026  
 
 ---
 
 ## 1. Executive Overview & Development Philosophy
 
-This document converts the **PRD**, **SRS Requirements**, **System Architecture**, and **UI/UX Specifications** into an actionable, sprint-by-sprint development roadmap for **Nexora**.
+This document converts the **PRD**, **SRS Requirements**, **System Architecture**, and **UI/UX Specifications** into an actionable, sprint-by-sprint development roadmap for **Inferaxis**.
 
 The implementation strategy adheres to four core engineering rules:
 1. **Engine Before Interface:** Build and validate the controlled Python statistical tools and LangGraph multi-agent orchestration before building the frontend.
@@ -25,7 +25,7 @@ The implementation strategy adheres to four core engineering rules:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                       NEXORA 12-WEEK MVP ROADMAP                            │
+│                       INFERAXIS 12-WEEK MVP ROADMAP                            │
 ├──────────────┬──────────────┬──────────────┬──────────────┬─────────────────┤
 │ Weeks 1 - 2  │ Weeks 3 - 4  │ Weeks 5 - 6  │ Weeks 7 - 8  │ Weeks 9 - 10    │ Weeks 11 - 12
 │ Sprint 1     │ Sprint 2     │ Sprint 3     │ Sprint 4     │ Sprint 5        │ Sprint 6
@@ -94,7 +94,7 @@ graph TD
 ### Sprint 3: LangGraph Multi-Agent Orchestration & Prompts (Weeks 5–6)
 * **Goal:** Implement the stateful multi-agent analytical loop using LangGraph and LangChain.
 * **Tasks:**
-  1. Define global `NexoraAnalysisState` TypedDict schema.
+  1. Define global `InferaxisAnalysisState` TypedDict schema.
   2. Configure provider-agnostic LLM interface (supporting OpenAI GPT-4o, Anthropic Claude 3.5 Sonnet, Google Gemini 1.5 Pro).
   3. Build `SupervisorAgent` responsible for question decomposition and dynamic `AnalysisPlan` creation.
   4. Build specialized sub-agents:
@@ -147,7 +147,7 @@ graph TD
   5. Implement frontend E2E browser tests using Playwright.
   6. Finalize Caddy / Nginx reverse proxy and production Docker Compose configuration.
   7. Author production deployment guides, environment variable templates, and user quickstart documentation.
-* **Deliverable:** Production-ready Nexora MVP platform release.
+* **Deliverable:** Production-ready Inferaxis MVP platform release.
 
 ---
 

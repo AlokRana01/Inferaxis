@@ -1,17 +1,17 @@
-# UI/UX Specification Document
+﻿# UI/UX Specification Document
 
-## Project: Nexora — Autonomous AI for Evidence-Based Data Intelligence
+## Project: Inferaxis — Autonomous AI for Evidence-Based Data Intelligence
 **Document Version:** 2.0.0 (Updated to Reference UI Design)  
 **Status:** Approved UI/UX Design System & Master Blueprint  
 **Target Release:** MVP (Phase 1)  
-**Author:** Nexora Product Design & Experience Group  
+**Author:** Inferaxis Product Design & Experience Group  
 **Last Updated:** October 2026  
 
 ---
 
 ## 1. Design Philosophy & Master Visual Layout: The Bento Grid Style ("Banto Style")
 
-Nexora adopts the modern **Bento Grid (Banto Style)** design architecture—inspired by traditional Japanese bento boxes, featuring compartmentalized, modular cells that organize complex, multi-modal data intelligence into clean, scannable, and interactive visual containers.
+Inferaxis adopts the modern **Bento Grid (Banto Style)** design architecture—inspired by traditional Japanese bento boxes, featuring compartmentalized, modular cells that organize complex, multi-modal data intelligence into clean, scannable, and interactive visual containers.
 
 ### Core Pillars of the Bento Grid ("Banto Style") System:
 1. **Compartmentalized Modularity:** Each analytic dimension (Metrics, Natural Language Inquiry, Recent Files, Multi-Agent Activity, Statistical Insights, Trend Charts, Data Quality, and Quick Actions) lives in its own dedicated, self-contained Bento card.
@@ -25,7 +25,7 @@ Nexora adopts the modern **Bento Grid (Banto Style)** design architecture—insp
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                         NEXORA DESKTOP WORKSPACE LAYOUT                                     │
+│                                         INFERAXIS DESKTOP WORKSPACE LAYOUT                                     │
 ├──────────────┬──────────────────────────────────────────────────────────────────────────────────────────────┤
 │ SIDEBAR      │ TOP BAR: Welcome back, [User]! │ [Search datasets, analyses...]    [🔔 Notifications] [☀️/🌙] │
 │ (Dark Navy)  ├──────────────────────────────────────────────────────────────────────────────────────────────┤

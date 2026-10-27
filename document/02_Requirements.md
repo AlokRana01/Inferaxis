@@ -1,10 +1,10 @@
-# Software Requirements Specification (SRS)
+﻿# Software Requirements Specification (SRS)
 
-## Project: Nexora — Autonomous AI for Evidence-Based Data Intelligence
+## Project: Inferaxis — Autonomous AI for Evidence-Based Data Intelligence
 **Document Version:** 1.0.0  
 **Status:** Approved / Specification Baseline  
 **Target Release:** MVP (Phase 1)  
-**Author:** Nexora Systems Engineering & Architecture Group  
+**Author:** Inferaxis Systems Engineering & Architecture Group  
 **Last Updated:** October 2026  
 
 ---
@@ -12,10 +12,10 @@
 ## 1. Introduction
 
 ### 1.1 Purpose
-This document specifies the software requirements for **Nexora**, an autonomous AI-driven data intelligence platform. It provides a formal, testable specification of functional capabilities, non-functional constraints, data schemas, security controls, and error-handling behaviors for developers, testers, and product stakeholders.
+This document specifies the software requirements for **Inferaxis**, an autonomous AI-driven data intelligence platform. It provides a formal, testable specification of functional capabilities, non-functional constraints, data schemas, security controls, and error-handling behaviors for developers, testers, and product stakeholders.
 
 ### 1.2 System Scope
-Nexora ingests tabular data files (CSV, XLSX), runs automated data profiling and quality assessments, orchestrates a multi-agent analytical pipeline using **LangGraph**, executes mathematical and statistical operations through controlled Python tools, and renders evidence-backed insights, interactive visualizations, and exportable reports in a modern React web application.
+Inferaxis ingests tabular data files (CSV, XLSX), runs automated data profiling and quality assessments, orchestrates a multi-agent analytical pipeline using **LangGraph**, executes mathematical and statistical operations through controlled Python tools, and renders evidence-backed insights, interactive visualizations, and exportable reports in a modern React web application.
 
 ### 1.3 Key Architectural Axiom
 > **"The AI reasons about the analysis; controlled Python tools execute the analysis."**  
@@ -25,7 +25,7 @@ Nexora ingests tabular data files (CSV, XLSX), runs automated data profiling and
 
 ## 2. User Roles & Access Control
 
-Nexora implements Role-Based Access Control (RBAC) to govern workspace data and analysis execution.
+Inferaxis implements Role-Based Access Control (RBAC) to govern workspace data and analysis execution.
 
 | Role Code | Role Name | Description | Key Permissions |
 | :--- | :--- | :--- | :--- |
